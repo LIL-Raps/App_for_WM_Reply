@@ -6,7 +6,6 @@ import {ConnectedRouter} from 'react-router-redux';
 import {store} from './store/configureStore';
 import {Route} from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
-import Bus from './components/Bus';
 import StopPoint from "./components/StopPoint";
 
 
@@ -16,7 +15,6 @@ ReactDOM.render(
         <ConnectedRouter history={history}>
             <div>
                 <Route exact path='/' component={App}/>
-                <Route path='/bus/:id' component={Bus}/>
                 <Route path='/stoppoint/:id' component={StopPoint}/>
             </div>
         </ConnectedRouter>

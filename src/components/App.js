@@ -12,10 +12,9 @@ class App extends React.Component {
             <Container className="container ">
                 <div className="text-center jumbotron">
                     <h1 className="display-1 ">
-                        London helper
-                        <hr class="my-4"/>
+                        London Assistant
+                        <hr className="my-4"/>
                     </h1>
-
                 </div>
                 <Wrapper></Wrapper>
             </Container>
