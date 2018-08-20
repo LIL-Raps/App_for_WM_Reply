@@ -52,13 +52,15 @@ class Wrapper extends React.Component {
     selectTransport(bus) {
         if (bus === 'tube'){
             this.props.clearScheduls();
-            this.props.clearScheduls();
         }
         this.props.fetchData(`https://api.tfl.gov.uk/Line/Mode/${bus}?app_id=78dd5346&app_key=e3b6fda88d537f6e85ed5aeb85738144`)
         this.setState({
             selectTransportType: bus,
             progressBar: '25%',
-            isVisibleSelect:true
+            isVisibleSelect:true,
+            isVisible: false,
+            isVisibleDirection:false,
+            isVisibleDays:false,
         });
     }
 
@@ -122,7 +124,7 @@ class Wrapper extends React.Component {
                                 {console.log(Array.isArray(search(busPoint))?search(busPoint).includes('1')?'yes':'ni':'')}
                                     <div className="card-header text-white">{busPoint.commonName}</div>
                                 <div className="card-body p-0">
-                                    <button style={{transition:'all .5s'}} type="button" className={'btn btn-success p-1'+ Array.isArray(search(busPoint))?search(busPoint).includes('1')?' btn btn-danger p-1':' btn btn-success p-1':''} onClick={() => this.removeTag(busPoint.id)}>Find out the schedule</button>
+                                    {this.state.selectTransportType === 'tube'?' ':<button style={{transition:'all .5s'}} type="button" className={'btn btn-success p-1'+ Array.isArray(search(busPoint))?search(busPoint).includes('1')?' btn btn-danger p-1':' btn btn-success p-1':''} onClick={() => this.removeTag(busPoint.id)}>Find out the schedule</button>}
                                    <button style={{transition:'all .5s'}} type="button" className={'btn btn-success p-1 float-right'+Array.isArray(search(busPoint))?search(busPoint).includes('1')?' btn btn-danger p-1 float-right':' btn btn-success p-1 float-right':''}> <Link className="text-white"  to={'/stoppoint/' + busPoint.id}  onClick={() => this.removeTag(busPoint.id)}>Show on the map</Link></button>
                                 </div>
                                 {mass.length-1 !== index?<Line color={"rgb(40, 167, 69)"+Array.isArray(search(busPoint))?search(busPoint).includes('1')?' rgb(220, 53, 69)':' rgb(40, 167, 69)':''}><br/></Line>:''}
@@ -132,7 +134,7 @@ class Wrapper extends React.Component {
                                 {console.log(Array.isArray(search(busPoint))?search(busPoint).includes('1')?'yes':'ni':'')}
                                 <div className="card-header text-white">{busPoint.commonName}</div>
                                 <div className="card-body p-0">
-                                    <button style={{transition:'all .5s'}} type="button" className={'btn btn-success p-1'+ Array.isArray(search(busPoint))?search(busPoint).includes('1')?' btn btn-danger p-1':' btn btn-success p-1':''} onClick={() => this.removeTag(busPoint.id)}>Find out the schedule</button>
+                                    {this.state.selectTransportType === 'tube'?' ':<button style={{transition:'all .5s'}} type="button" className={'btn btn-success p-1'+ Array.isArray(search(busPoint))?search(busPoint).includes('1')?' btn btn-danger p-1':' btn btn-success p-1':''} onClick={() => this.removeTag(busPoint.id)}>Find out the schedule</button>}
                                     <button style={{transition:'all .5s'}} type="button" className={'btn btn-success p-1 float-right'+Array.isArray(search(busPoint))?search(busPoint).includes('1')?' btn btn-danger p-1 float-right':' btn btn-success p-1 float-right':''}> <Link className="text-white"  to={'/stoppoint/' + busPoint.id}  onClick={() => this.removeTag(busPoint.id)}>Show on the map</Link></button>
                                 </div>
                                 {mass.length-1 !== index?<Line color={"rgb(40, 167, 69)"+Array.isArray(search(busPoint))?search(busPoint).includes('1')?' rgb(220, 53, 69)':' rgb(40, 167, 69)':''}><br/></Line>:''}
